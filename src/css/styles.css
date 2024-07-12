@@ -1,0 +1,25 @@
+/* Estilo para el botón de favorito */
+.favorite-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #ff6347; /* Color tomate para el icono */
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.favorite-button i {
+    color: transparent; /* Relleno transparente por defecto */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #ff6347; /* Contorno del icono */
+}
+
+.favorite-button.favorited i {
+    color: #dc3545; /* Color rojo cuando está marcado como favorito */
+}
+
+.favorite-button:hover i {
+    color: #ff4500; /* Color naranja oscuro al pasar el ratón */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #ff4500;
+}
