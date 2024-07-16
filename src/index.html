@@ -13,43 +13,71 @@
             max-height: 400px; /* Ajusta este valor según tus necesidades */
             object-fit: cover; /* Esto asegura que la imagen cubra todo el contenedor sin distorsionarse */
         }
+        .highlight-section {
+            background-color: #e0d4d4;
+            color: #393b3d;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(255, 243, 243, 0.322);
+        }
+        .highlight-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .highlight-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .highlight-section a {
+            color: #f8f9fa;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 30px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .highlight-section a:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <header class="bg-dark text-white p-3">
-       <!-- En la barra de navegación, añadir un enlace a Favoritos -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">TheMealDB App</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Inicio</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categorías
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="categories"></div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#examples">Ejemplos de Recetas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#search">Buscar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="favorites.html">Favoritos</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="button" onclick="location.href='cocktail.html'">Cocktails</button>
-        </form>
-    </div>
-</nav>
-
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">TheMealDB App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categorías
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="categories"></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#examples">Ejemplos de Recetas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search">Buscar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html">Favoritos</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="button" onclick="location.href='login.html'">Iniciar Sesión</button>
+                </form>
+            </div>
+        </nav>
     </header>
     <main class="container my-5">
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -75,6 +103,11 @@
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
         </section>
+        <section class="highlight-section">
+            <h2 class="mb-4">Discover Delicious Cocktails</h2>
+            <p class="lead">Explore a variety of delicious cocktail recipes. Click the button below to see more.</p>
+            <a href="cocktail.html" class="btn btn-lg">Explore Cocktails</a>
+        </section>
         <section id="examples" class="my-4">
             <h2 class="mb-4 text-center">Examples of Meals</h2>
             <div id="example-meals" class="row"></div>
@@ -95,8 +128,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" id="mealModalBody">
-                </div>
+                <div class="modal-body" id="mealModalBody"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
@@ -123,5 +155,16 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script>
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
 </body>
 </html>
