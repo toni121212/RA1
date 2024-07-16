@@ -75,6 +75,7 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="button" onclick="location.href='login.html'">Iniciar Sesión</button>
+                    <button class="btn btn-outline-danger my-2 my-sm-0 ml-2" type="button" onclick="logout()">Cerrar Sesión</button>
                 </form>
             </div>
         </nav>
@@ -165,6 +166,16 @@
                 window.location.href = 'login.html';
             }
         });
+
+        function logout() {
+            firebase.auth().signOut().then(() => {
+                console.log('User signed out.');
+                // Redirigir al usuario a la página de inicio de sesión o a otra página
+                window.location.href = 'login.html';
+            }).catch((error) => {
+                console.error('Sign out error', error);
+            });
+        }
     </script>
 </body>
 </html>

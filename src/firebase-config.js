@@ -17,3 +17,12 @@ if (!firebase.apps.length) {
 
 const db = firebase.firestore();
 const auth = firebase.auth();
+function logout() {
+    firebase.auth().signOut().then(() => {
+        console.log('User signed out.');
+        // Redirigir al usuario a la página de inicio de sesión o a otra página
+        window.location.href = 'login.html';
+    }).catch((error) => {
+        console.error('Sign out error', error);
+    });
+}
